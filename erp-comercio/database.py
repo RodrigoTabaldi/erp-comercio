@@ -2,13 +2,13 @@ import sqlite3
 import os
 from datetime import datetime
 
-# ---------------------------------------------------------
+
 # BANCO DE DADOS — database.py
-# ---------------------------------------------------------
+
 # O sqlite3 é um banco de dados que fica salvo num arquivo
 # no próprio computador — sem precisar instalar nada.
 # Ideal para sistemas desktop como esse ERP.
-# ---------------------------------------------------------
+
 
 CAMINHO_DB = 'erp.db'  # arquivo do banco de dados
 
@@ -34,9 +34,9 @@ def criar_tabelas():
     conn = conectar()
     cursor = conn.cursor()
 
-    # ---------------------------------------------------------
+   
     # TABELA: clientes
-    # ---------------------------------------------------------
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS clientes (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,9 +51,9 @@ def criar_tabelas():
         )
     ''')
 
-    # ---------------------------------------------------------
+    
     # TABELA: fornecedores
-    # ---------------------------------------------------------
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS fornecedores (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,9 +68,9 @@ def criar_tabelas():
         )
     ''')
 
-    # ---------------------------------------------------------
+    
     # TABELA: produtos (estoque)
-    # ---------------------------------------------------------
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS produtos (
             id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -89,9 +89,9 @@ def criar_tabelas():
         )
     ''')
 
-    # ---------------------------------------------------------
+    
     # TABELA: vendas
-    # ---------------------------------------------------------
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS vendas (
             id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -106,9 +106,9 @@ def criar_tabelas():
         )
     ''')
 
-    # ---------------------------------------------------------
+    
     # TABELA: itens_venda (produtos de cada venda)
-    # ---------------------------------------------------------
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS itens_venda (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -122,9 +122,9 @@ def criar_tabelas():
         )
     ''')
 
-    # ---------------------------------------------------------
+    
     # TABELA: financeiro (contas a pagar e receber)
-    # ---------------------------------------------------------
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS financeiro (
             id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -141,9 +141,9 @@ def criar_tabelas():
         )
     ''')
 
-    # ---------------------------------------------------------
+    
     # TABELA: movimentacoes_estoque
-    # ---------------------------------------------------------
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS movimentacoes_estoque (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -161,9 +161,9 @@ def criar_tabelas():
     print("✅ Banco de dados inicializado com sucesso.")
 
 
-# ---------------------------------------------------------
+
 # FUNÇÕES GENÉRICAS DE CRUD
-# ---------------------------------------------------------
+
 # CRUD = Create, Read, Update, Delete
 # São as 4 operações básicas de qualquer banco de dados
 
@@ -207,9 +207,9 @@ def buscar_todos(sql, params=()):
     return [dict(row) for row in rows]
 
 
-# ---------------------------------------------------------
+
 # FUNÇÕES DE ESTOQUE
-# ---------------------------------------------------------
+
 
 def atualizar_estoque(produto_id, quantidade, tipo, motivo=''):
     """
@@ -251,9 +251,9 @@ def produtos_estoque_baixo():
     ''')
 
 
-# ---------------------------------------------------------
+
 # FUNÇÕES DE RELATÓRIO
-# ---------------------------------------------------------
+
 
 def resumo_financeiro(mes=None, ano=None):
     """
@@ -285,9 +285,9 @@ def resumo_financeiro(mes=None, ano=None):
     }
 
 
-# ---------------------------------------------------------
+
 # INICIALIZAÇÃO
-# ---------------------------------------------------------
+
 if __name__ == '__main__':
     criar_tabelas()
     print("Banco de dados criado em:", CAMINHO_DB)

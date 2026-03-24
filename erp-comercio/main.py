@@ -24,9 +24,9 @@ def main(page: ft.Page):
 
     area_conteudo = ft.Column(expand=True, scroll=ft.ScrollMode.AUTO)
 
-    # ---------------------------------------------------------
+   
     # DASHBOARD
-    # ---------------------------------------------------------
+   
     def tela_dashboard():
         area_conteudo.controls.clear()
 
@@ -79,9 +79,9 @@ def main(page: ft.Page):
         )
         page.update()
 
-    # ---------------------------------------------------------
+   
     # TELAS DOS MÓDULOS
-    # ---------------------------------------------------------
+   
     def tela_clientes():
         from modulos.clientes import tela as t
         area_conteudo.controls.clear()
@@ -112,9 +112,9 @@ def main(page: ft.Page):
         area_conteudo.controls.append(t(page, COR_CARD, COR_BORDA, COR_AZUL, COR_TEXTO, COR_SUBTEXTO))
         page.update()
 
-    # ---------------------------------------------------------
+   
     # SIDEBAR
-    # ---------------------------------------------------------
+   
     def item_menu(icone, texto, acao):
         return ft.Container(
             content=ft.Row([
